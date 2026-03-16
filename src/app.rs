@@ -1,9 +1,5 @@
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
-use leptos_router::{
-    components::{Route, Router, Routes},
-    StaticSegment,
-};
+use leptos_meta::{provide_meta_context, MetaTags, Title};
 use leptos_struct_table::*;
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
@@ -48,10 +44,6 @@ pub fn App() -> impl IntoView {
     }];
 
     view! {
-        // injects a stylesheet into the document <head>
-        // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/leptos-struct-table-bug.css"/>
-
         // sets the document title
         <Title text="Welcome to Leptos"/>
         <div>
@@ -61,30 +53,6 @@ pub fn App() -> impl IntoView {
                     scroll_container="html"
                 />
             </table>
-        </div>
-
-        // content for this welcome page
-        <Router>
-            <main>
-                <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=HomePage/>
-                </Routes>
-            </main>
-        </Router>
-    }
-}
-
-/// Renders the home page of your application.
-#[component]
-fn HomePage() -> impl IntoView {
-    // Creates a reactive value to update the button
-    let count = RwSignal::new(0);
-    let on_click = move |_| *count.write() += 1;
-
-    view! {
-        <div>
-            <h1>"Welcome to Leptos!"</h1>
-            <button on:click=on_click>"Click Me: " {count}</button>
         </div>
     }
 }
