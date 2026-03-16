@@ -56,10 +56,10 @@ pub fn App() -> impl IntoView {
         <Title text="Welcome to Leptos"/>
         <div>
             <table>
-                // <TableContent
-                //     rows
-                //     scroll_container="html"
-                // />
+                <TableContent
+                    rows
+                    scroll_container="html"
+                />
             </table>
         </div>
 
